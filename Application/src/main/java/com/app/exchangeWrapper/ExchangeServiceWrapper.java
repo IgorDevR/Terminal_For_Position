@@ -1,7 +1,6 @@
 package com.app.exchangeWrapper;
 
-import com.app.util.logger.LogList;
-import com.app.util.logger.Logger;
+import com.app.util.logger.ExceptionLog;
 import com.terminal.position.common.object.dto.binance.PositionData;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -66,9 +65,10 @@ public interface ExchangeServiceWrapper {
     try {
       return callable.call();
     } catch (Exception e) {
-      LogList.addLog(Logger.getLogMessage(e));
+     ExceptionLog.setLogMessage(e);
       return defaultValue;
     }
+
   }
 
 
